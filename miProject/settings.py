@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 
+import dj_database_url
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -82,21 +84,11 @@ WSGI_APPLICATION = 'miProject.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-   'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db-ensayo',
-        'USER': 'ro7t8f3myiet7r3zerqn',
-        'PASSWORD': 'pscale_pw_oUPQXKV0X1PryOVakAFfes4kM7ZFNrAAtj8AIlm6JvO',
-        'HOST': 'aws.connect.psdb.cloud',
-        'PORT': '', # Deja esto vacío para usar el puerto predeterminado de MySQL
-        # Elimina la configuración de SSL
-        # 'OPTIONS': {
-        #     'ssl': {
-        #         'ca': '/etc/ssl/certs/ca-certificates.crt',
-        #         'sslmode': 'VERIFY_IDENTITY',
-        #     },
-        # },
-    }
+   'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default='postgres://exampledb_qpud_user:j9tENAPqrYFleMb9UQ9wf4v1S8l7XdX9@dpg-cj1k32d9aq02d7l5c2o0-a/exampledb_qpud',
+        conn_max_age=600
+    )
 }
 
 
